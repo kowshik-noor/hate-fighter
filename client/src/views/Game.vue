@@ -27,7 +27,7 @@
     <div class="container">
       <div class="columns">
         <div class="column"><Card /></div>
-        <div class="column"><Card /></div>
+        <div class="column"></div>
       </div>
     </div>
   </section>

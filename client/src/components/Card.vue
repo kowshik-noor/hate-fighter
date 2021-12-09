@@ -20,8 +20,8 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">Video Name</p>
-          <p class="subtitle is-6">YouTuber Name</p>
+          <p class="title is-4">{{title}}</p>
+          <p class="subtitle is-6">{{channelName}}</p>
         </div>
 
         <div>
@@ -35,5 +35,32 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      id: "",
+      title: "",
+      channelName: "",
+      dislikes: 0
+    }
+  },
+  methods: {
+    async fetchVideo() {
+      const res = await fetch('http://127.0.0.1:5000/api')
+      const data = await res.json()
+      return data
+    }
+  },
+  async created() {
+    const video = await this.fetchVideo()
+
+    this.id = video["video_id"]
+    this.title = video["title"]
+    this.channelName = video["channel_name"]
+    this.dislikes = video["dislikes"]
+
+    console.log(this.title)
+    console.log(video["title"])
+  }
+};
 </script>
