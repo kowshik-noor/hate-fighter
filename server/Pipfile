@@ -12,6 +12,7 @@ google-api-python-client = "*"
 flask-restful = "*"
 python-dotenv = "*"
 flask-cors = "*"
+celery = {extras = ["redis"], version = "*"}
 
 [dev-packages]
 

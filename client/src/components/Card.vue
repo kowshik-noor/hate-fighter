@@ -10,7 +10,7 @@
       <iframe
         width="652"
         height="506"
-        src="https://www.youtube-nocookie.com/embed/11bigElcidk?controls=0"
+        :src="'https://www.youtube-nocookie.com/embed/' + id + '?controls=0'"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -48,7 +48,7 @@ export default {
     async fetchVideo() {
       const res = await fetch('http://127.0.0.1:5000/api')
       const data = await res.json()
-      return data
+      return JSON.parse(data)
     }
   },
   async created() {
@@ -58,9 +58,6 @@ export default {
     this.title = video["title"]
     this.channelName = video["channel_name"]
     this.dislikes = video["dislikes"]
-
-    console.log(this.title)
-    console.log(video["title"])
   }
 };
 </script>

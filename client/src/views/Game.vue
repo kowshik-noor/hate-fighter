@@ -27,7 +27,7 @@
     <div class="container">
       <div class="columns">
         <div class="column"><Card /></div>
-        <div class="column"></div>
+        <div class="column"><Card/></div>
       </div>
     </div>
   </section>
@@ -44,10 +44,14 @@ export default {
   },
   data() {
     return {
-      dislikesA: 0,
-      dislikesB: 0,
-      score: 0,
-      highScore: 0
+      videoA : {
+        id: "",
+        dislikes: 0
+      }, 
+      videoB : {
+        id: "",
+        dislikes: 0
+      }
     };
   },
   created() {
