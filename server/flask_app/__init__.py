@@ -50,7 +50,6 @@ def insert_random_video():
     )
     response = request.execute()
 
-    # contains everything about the video except the dislikes
     video = response["items"][0]
     video_statistics = requests.get(f"https://returnyoutubedislikeapi.com/Votes?videoId={video['id']}").json()
 

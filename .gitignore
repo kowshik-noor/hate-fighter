@@ -2,6 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/vuejs,flask,python,osx
 # Edit at https://www.toptal.com/developers/gitignore?templates=vuejs,flask,python,osx
 
+### Redis & Other .db files ###
+*.rdb
+*.db
+
 ### Flask ###
 instance/*
 !instance/.gitignore

@@ -27,7 +27,7 @@ class Video:
         else:
             return False
 
-    # inserts a video into the database
+    # inserts a video into the database if its ID is not in the db
     @classmethod
     def create_video(cls, data):
         if not cls.show_video({'video_id': data['video_id']}):
@@ -35,9 +35,12 @@ class Video:
             connectToMySQL('hate-fighter').query_db(query, data)
             return
         else:
-            pass
+            # if the video id exists in the db, update the row with the latest info
+            cls.update_video(data)
+            return
 
     # updates a video with a given id
     @classmethod
-    def update_painting(cls, data):
-        pass
+    def update_video(cls, data):
+        query = "UPDATE videos SET title=%(title)s, channel_name=%(channel_name)s, dislikes=%(dislikes)s, updated_at=NOW() WHERE video_id=%(video_id)s;"
+        connectToMySQL('hate-fighter').query_db(query, data)
