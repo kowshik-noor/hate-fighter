@@ -22,10 +22,22 @@ class Video:
         query = "SELECT * FROM videos WHERE video_id = %(video_id)s;"
         result = connectToMySQL('hate-fighter').query_db(query, data)
 
-        return cls(result[0])
+        if len(result) > 0:
+            return cls(result[0])
+        else:
+            return False
 
     # inserts a video into the database
     @classmethod
     def create_video(cls, data):
-        query = "INSERT INTO videos (video_id, title, channel_name, dislikes) VALUES (%(video_id)s, %(title)s, %(channel_name)s, %(dislikes)s);"
-        connectToMySQL('hate-fighter').query_db(query, data)
+        if not cls.show_video({'video_id': data['video_id']}):
+            query = "INSERT INTO videos (video_id, title, channel_name, dislikes) VALUES (%(video_id)s, %(title)s, %(channel_name)s, %(dislikes)s);"
+            connectToMySQL('hate-fighter').query_db(query, data)
+            return
+        else:
+            pass
+
+    # updates a video with a given id
+    @classmethod
+    def update_painting(cls, data):
+        pass
