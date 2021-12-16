@@ -36,6 +36,9 @@
 
 <script>
 export default {
+  props: {
+    template: Object
+  },
   data() {
     return {
       id: "",
@@ -58,6 +61,13 @@ export default {
     this.title = video["title"]
     this.channelName = video["channel_name"]
     this.dislikes = video["dislikes"]
+
+    this.$emit('template', {
+      label: this.template.label,
+      id: this.id,
+      dislikes: this.dislikes,
+      reloads: this.template.reloads
+    })
   }
 };
 </script>

@@ -28,8 +28,8 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column"><Card /></div>
-          <div class="column"><Card /></div>
+          <div class="column"><Card :key="videoA.reloads" :template="videoA" @template="printObject"/></div>
+          <div class="column"><Card :key="videoB.reloads" :template="videoB" @template="printObject"/></div>
         </div>
       </div>
     </section>
@@ -48,17 +48,52 @@ export default {
   data() {
     return {
       videoA: {
+        label: "A",
         id: "",
         dislikes: 0,
+        reloads: 0
       },
       videoB: {
+        label: "B",
         id: "",
         dislikes: 0,
+        reloads: 0
       },
-      videos: []
+      // this will keep track of the video ids used in each session
+      videos: [],
+      score: 0
     };
   },
+  methods: {
+    printObject(thing) {
+      if (thing.label === "A") {
+        this.videoA = thing
+      } else {
+        this.videoB = thing
+      }
+    },
+    keepTabs(val) {
+      if(this.videos.includes(val.id)) {
+        val = {...val, reloads: val.reloads + 1}
+        return
+      } else {
+        this.videos = [...this.videos, val.id]
+        return
+      }
+    }
+  },
   created() {
+  },
+  watch: {
+    videoA(val) {
+      this.keepTabs(val)
+    },
+    videoB(val) {
+      this.keepTabs(val)
+    },
+    videos(val) {
+      console.log(val)
+    }
   },
   emits: ["change-view"],
 };
