@@ -1,5 +1,5 @@
 <template>
-  <component @pass-score="passScore" @changeView="changeView" :is="activeView" :score="score" />
+  <component @pass-scores="passScores" @changeView="changeView" :is="activeView" :score="score" :highScore="highScore" />
 </template>
 
 <script>
@@ -17,15 +17,17 @@ export default {
   data() {
     return {
       activeView: 'Game',
-      score: 0
+      score: 0,
+      highScore: 0
     }
   },
   methods: {
     changeView(view) {
       this.activeView = view
     },
-    passScore(score) {
-      this.score = score
+    passScores(scores) {
+      this.score = scores.score
+      this.highScore = scores.highScore
     }
   }
 };

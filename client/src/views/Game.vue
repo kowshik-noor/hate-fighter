@@ -23,7 +23,10 @@
       </div>
       <h2 class="title is-3 mb-0">Which YouTube video has more dislikes?</h2>
       <div></div>
-      <div class="p-2">Score: {{score}}</div>
+      <div class="p-2">
+        <div class="has-text-right">Score: {{score}}</div>
+        <div>High Score: {{highScore}}</div>
+      </div>
     </nav>
     <section class="section">
       <div class="container">
@@ -70,8 +73,7 @@ export default {
       // this will keep track of the video ids used in each session
       videos: [],
       score: 0,
-      // i might not need this property depending on the how the function that will compare the dislikes will be implemented
-      selectedCard: null
+      highScore: 0
     };
   },
   methods: {
@@ -94,17 +96,18 @@ export default {
     compareDislikes(selectedVid, unselectedVid) {
       if (selectedVid.dislikes > unselectedVid.dislikes) {
         this.score++
+        if (this.score > this.highScore) this.highScore = this.score
         this.rerenderBoth()
         return selectedVid
       } else {
-        this.$emit('pass-score', this.score)
+        this.$emit('pass-scores', {score: this.score, highScore: this.highScore})
         this.$emit('change-view', 'GameOver')
       }
     },
     rerender(card) {
       if(card.label === 'A') {
         this.videoA = {...this.videoA, reloads: this.videoA.reloads + 1}
-      } else  {
+      } else {
         this.videoB = {...this.videoB, reloads: this.videoB.reloads + 1}
       }
     },
@@ -113,7 +116,8 @@ export default {
       this.rerender({label: 'B'})
     }
   },
-  created() {
+  mounted() {
+    if (localStorage.highScore) this.highScore = localStorage.highScore
   },
   watch: {
     videoA(val) {
@@ -121,6 +125,13 @@ export default {
     },
     videoB(val) {
       this.keepTabs(val)
+      // rerender card B if it has the same amound of dislikes as card A
+      if (val.dislikes === this.videoA.dislikes) {
+        this.rerender({label: "B"})
+      }
+    },
+    highScore(val) {
+      localStorage.highScore = val
     }
   },
   emits: ["change-view", "pass-score"],
