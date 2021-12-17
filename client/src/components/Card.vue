@@ -10,7 +10,7 @@
       <iframe
         width="652"
         height="506"
-        :src="'https://www.youtube-nocookie.com/embed/' + id + '?controls=0'"
+        :src="'https://www.youtube-nocookie.com/embed/' + id + '?controls=1'"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -25,7 +25,9 @@
         </div>
 
         <div>
-          <button class="button is-large is-rounded is-success is-outlined">
+          <button
+          @click="$emit('compare-dislikes')" 
+          class="button is-large is-rounded is-success is-outlined">
             <i class="fas fa-crosshairs"></i>
           </button>
         </div>
@@ -52,6 +54,9 @@ export default {
       const res = await fetch('http://127.0.0.1:5000/api')
       const data = await res.json()
       return JSON.parse(data)
+    },
+    onClick() {
+
     }
   },
   async created() {
