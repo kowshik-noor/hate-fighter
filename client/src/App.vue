@@ -1,5 +1,10 @@
 <template>
-  <component @pass-scores="passScores" @changeView="changeView" :is="activeView" :score="score" :highScore="highScore" />
+  <component 
+  @pass-scores="passScores" 
+  @changeView="changeView" 
+  :is="activeView" 
+  :score="score" 
+  :highScore="highScore" />
 </template>
 
 <script>

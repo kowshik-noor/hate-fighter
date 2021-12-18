@@ -66,7 +66,6 @@ export default {
         id: "",
         dislikes: 0,
         reloads: 0,
-        showDislikes: false
       },
       videoB: {
         label: "B",
@@ -77,7 +76,8 @@ export default {
       // this will keep track of the video ids used in each session
       videos: [],
       score: 0,
-      highScore: 0
+      highScore: 0,
+      showDislikes: false
     };
   },
   methods: {
@@ -106,11 +106,13 @@ export default {
         setTimeout(() => {
           this.showDislikes = false
           this.rerenderBoth()
-        }, 2500)
-        return selectedVid
+        }, 2000)
       } else {
-        this.$emit('pass-scores', {score: this.score, highScore: this.highScore})
-        this.$emit('change-view', 'GameOver')
+        setTimeout(() => {
+          this.$emit('pass-scores', {score: this.score, highScore: this.highScore})
+          this.$emit('change-view', 'GameOver')
+        }, 2000)
+        
       }
     },
     rerender(card) {
@@ -126,7 +128,7 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.highScore) this.highScore = localStorage.highScore
+    if (localStorage.highScore) this.highScore = parseInt(localStorage.highScore)
   },
   watch: {
     videoA(val) {
