@@ -35,12 +35,15 @@
           :key="videoA.reloads" 
           :template="videoA" 
           @template="setObjects" 
-          @compare-dislikes="compareDislikes(videoA, videoB)" /></div>
+          @compare-dislikes="compareDislikes(videoA, videoB)"
+          :showDislikes="showDislikes"/></div>
+          
           <div class="column"><Card 
           :key="videoB.reloads" 
           :template="videoB" 
           @template="setObjects" 
-          @compare-dislikes="compareDislikes(videoB, videoA)"/></div>
+          @compare-dislikes="compareDislikes(videoB, videoA)"
+          :showDislikes="showDislikes"/></div>
         </div>
       </div>
     </section>
@@ -62,7 +65,8 @@ export default {
         label: "A",
         id: "",
         dislikes: 0,
-        reloads: 0
+        reloads: 0,
+        showDislikes: false
       },
       videoB: {
         label: "B",
@@ -94,10 +98,15 @@ export default {
       }
     },
     compareDislikes(selectedVid, unselectedVid) {
+      this.showDislikes = true
+
       if (selectedVid.dislikes > unselectedVid.dislikes) {
         this.score++
         if (this.score > this.highScore) this.highScore = this.score
-        this.rerenderBoth()
+        setTimeout(() => {
+          this.showDislikes = false
+          this.rerenderBoth()
+        }, 2500)
         return selectedVid
       } else {
         this.$emit('pass-scores', {score: this.score, highScore: this.highScore})
@@ -134,7 +143,7 @@ export default {
       localStorage.highScore = val
     }
   },
-  emits: ["change-view", "pass-score"],
+  emits: ["change-view", "pass-scores"],
 };
 </script>
 

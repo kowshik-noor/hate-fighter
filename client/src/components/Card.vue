@@ -7,6 +7,12 @@
           alt="Placeholder image"
         />
       </figure> -->
+      <div id="dislike-counter" 
+      class="is-overlay is-flex is-justify-content-center 
+      is-align-items-center"
+      v-if="showDislikes">
+        <h1 class="title is-1">{{dislikes}}</h1>
+      </div>
       <iframe
         width="652"
         height="506"
@@ -39,7 +45,8 @@
 <script>
 export default {
   props: {
-    template: Object
+    template: Object,
+    showDislikes: Boolean
   },
   data() {
     return {
@@ -76,3 +83,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+#dislike-counter {
+  background-color: rgba(224, 219, 219, 0.753);
+}
+</style>
