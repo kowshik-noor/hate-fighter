@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      activeView: 'Game',
+      activeView: 'Home',
       score: 0,
       highScore: 0
     }
