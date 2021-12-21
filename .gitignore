@@ -5,6 +5,9 @@
 ### Redis & Other .db files ###
 *.rdb
 *.db
+celerybeat-schedule.db
+dump.rdb
+
 
 ### Flask ###
 instance/*

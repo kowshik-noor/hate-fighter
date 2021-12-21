@@ -136,7 +136,7 @@ export default {
     },
     videoB(val) {
       this.keepTabs(val)
-      // rerender card B if it has the same amound of dislikes as card A
+      // rerender card B if it has the same amount of dislikes as card A
       if (val.dislikes === this.videoA.dislikes) {
         this.rerender({label: "B"})
       }

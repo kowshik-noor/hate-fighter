@@ -11,7 +11,12 @@
       class="is-overlay is-flex is-justify-content-center 
       is-align-items-center"
       v-if="showDislikes">
-        <h1 class="title is-1">{{dislikes}}</h1>
+        <h1 class="title is-1">
+          <vue3-autocounter 
+          :startAmount="0"
+          :endAmount="dislikes"
+          :duration="1"/>
+        </h1>
       </div>
       <iframe
         width="652"
