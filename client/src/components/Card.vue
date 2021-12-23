@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="mode">
     <div class="card-image">
       <!-- <figure class="image is-4by3">
         <img
@@ -51,7 +51,8 @@
 export default {
   props: {
     template: Object,
-    showDislikes: Boolean
+    showDislikes: Boolean,
+    mode: String
   },
   data() {
     return {
@@ -93,4 +94,10 @@ export default {
 #dislike-counter {
   background-color: rgba(224, 219, 219, 0.753);
 }
+
+.dark {
+  background-color: rgb(49,52,66);
+  box-shadow: 0 0.5em 1em -0.125em rgba(white, 0.1), 0 0px 0 1px rgba(white, 0.02);
+}
+
 </style>

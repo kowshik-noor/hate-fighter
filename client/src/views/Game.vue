@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="body" :class="mode">
     <nav
       class="navbar is-flex is-flex-direction-row is-justify-content-space-between is-align-items-center"
+      :class="(mode === 'dark') ? 'is-dark' : ''"
       role="navigation"
       aria-label="main navigation"
     >
@@ -21,7 +22,8 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <h2 class="title is-3 mb-0">Which YouTube video has more dislikes?</h2>
+      <h2 class="title is-3 mb-0" :class="mode === 'dark' ? 'has-text-white' : ''">
+        Which YouTube video has more dislikes?</h2>
       <div></div>
       <div class="p-2">
         <div class="has-text-right">Score: {{score}}</div>
@@ -36,14 +38,16 @@
           :template="videoA" 
           @template="setObjects" 
           @compare-dislikes="compareDislikes(videoA, videoB)"
-          :showDislikes="showDislikes"/></div>
+          :showDislikes="showDislikes"
+          :mode="mode"/></div>
           
           <div class="column"><Card 
           :key="videoB.reloads" 
           :template="videoB" 
           @template="setObjects" 
           @compare-dislikes="compareDislikes(videoB, videoA)"
-          :showDislikes="showDislikes"/></div>
+          :showDislikes="showDislikes"
+          :mode="mode"/></div>
         </div>
       </div>
     </section>
@@ -59,6 +63,7 @@ export default {
     Logo,
     Card,
   },
+  props: ['mode'],
   data() {
     return {
       videoA: {
@@ -149,4 +154,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.dark {
+  background-color: rgb(49,52,66);
+}
+</style>
