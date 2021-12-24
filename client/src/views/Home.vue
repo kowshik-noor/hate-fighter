@@ -4,7 +4,7 @@
       <div class="container is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
         <h3 class="title is-3 has-text-centered" :class="mode === 'dark' ? 'has-text-white' : ''">Welcome to</h3>
         <Logo classProp="is-spaced is-1" />
-        <h2 class="subtitle is-3" :class="mode === 'dark' ? 'has-text-white' : ''">Which YouTube video has more dislikes?</h2>
+        <h2 class="subtitle is-3" :class="mode === 'dark' ? 'has-text-light' : ''">Which YouTube video has more dislikes?</h2>
         <p class="content is-medium">This game was created to remind people that YouTube used to show the number of dislikes.</p>
         <button @click="$emit('change-view', 'Game')" 
         class="button is-success is-large is-rounded" 

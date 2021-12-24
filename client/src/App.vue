@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      activeView: "Game",
+      activeView: "GameOver",
       score: 0,
       highScore: 0,
       mode: "light"

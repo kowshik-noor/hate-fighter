@@ -1,15 +1,16 @@
 <template>
   <div>
-    <div id="body">
+    <div class="body" :class="mode">
       <section class="section">
         <div
           class="container is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
         >
-          <h1 class="title is-1 is-spaced">Game Over</h1>
-          <h2 class="subtitle is-3">Your score is {{ score }}</h2>
-          <h2 class="subtitle is-3">Your high score is {{ highScore }}</h2>
+          <h1 class="title is-1 is-spaced" :class="mode === 'dark' ? 'has-text-white' : ''">Game Over</h1>
+          <h2 class="subtitle is-3" :class="mode === 'dark' ? 'has-text-light' : ''">Your score is {{ score }}</h2>
+          <h2 class="subtitle is-3" :class="mode === 'dark' ? 'has-text-light' : ''">Your high score is {{ highScore }}</h2>
           <button @click="$emit('change-view', 'Game')"
-            class="button is-success is-large is-rounded">
+            class="button is-success is-large is-rounded"
+            :class="mode === 'dark' ? 'is-light' : ''">
               Play Again &nbsp; <i class="fas fa-redo-alt"></i></button>
         </div>
       </section>
@@ -22,13 +23,14 @@ export default {
   props: {
     score: Number,
     highScore: Number,
+    mode: String
   },
 };
 </script>
 
 
 <style lang="scss" scoped>
-#body {
+.body {
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -42,5 +44,9 @@ export default {
 
 .container {
   height: 100%;
+}
+
+.dark {
+    background-color: rgb(49,52,66);
 }
 </style>
