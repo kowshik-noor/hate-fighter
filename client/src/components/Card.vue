@@ -31,8 +31,8 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">{{title}}</p>
-          <p class="subtitle is-6">{{channelName}}</p>
+          <p class="title is-4" :class="mode === 'dark' ? 'has-text-white' : ''">{{title}}</p>
+          <p class="subtitle is-6" :class="mode === 'dark' ? 'has-text-white-ter' : ''">{{channelName}}</p>
         </div>
 
         <div>
