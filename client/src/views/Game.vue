@@ -10,17 +10,6 @@
         <a class="navbar-item" @click="$emit('change-view', 'Home')">
           <Logo width="112" height="28" />
         </a>
-
-        <a
-          role="button"
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
       </div>
       <h2 class="title is-3 mb-0" :class="mode === 'dark' ? 'has-text-white' : ''">
         Which YouTube video has more dislikes?</h2>
@@ -155,6 +144,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.body {
+  height: 100vh;
+}
+
 .dark {
   background-color: rgb(49,52,66);
 }

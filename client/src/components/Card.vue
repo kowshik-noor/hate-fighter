@@ -1,12 +1,6 @@
 <template>
   <div class="card" :class="mode">
     <div class="card-image">
-      <!-- <figure class="image is-4by3">
-        <img
-          src="https://bulma.io/images/placeholders/1280x960.png"
-          alt="Placeholder image"
-        />
-      </figure> -->
       <div id="dislike-counter" 
       class="is-overlay is-flex is-justify-content-center 
       is-align-items-center"
@@ -64,7 +58,7 @@ export default {
   },
   methods: {
     async fetchVideo() {
-      const res = await fetch('http://127.0.0.1:5000/api')
+      const res = await fetch('http://api:5000/api')
       const data = await res.json()
       return JSON.parse(data)
     },

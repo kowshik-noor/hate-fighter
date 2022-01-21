@@ -15,8 +15,8 @@ load_dotenv()
 app = Flask(__name__)
 
 app.config.update(
-    CELERY_BROKER_URL='redis://localhost:6379',
-    CELERY_RESULT_BACKEND='redis://localhost:6379',
+    CELERY_BROKER_URL='redis://redis:6379',
+    CELERY_RESULT_BACKEND='redis://redis:6379',
     CELERYBEAT_SCHEDULE= {
         'say-every-10-minutes': {
             'task': 'insert_random_video',
