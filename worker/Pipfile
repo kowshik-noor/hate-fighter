@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+celery = "*"
 pymysql = "*"
-beautifulsoup4 = "*"
-lxml = "*"
+flask = "*"
+redis = "*"
 requests = "*"
 google-api-python-client = "*"
-flask-restful = "*"
-python-dotenv = "*"
-flask-cors = "*"
+bs4 = "*"
+lxml = "*"
 
 [dev-packages]
 
