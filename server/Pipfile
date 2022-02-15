@@ -5,12 +5,7 @@ name = "pypi"
 
 [packages]
 pymysql = "*"
-beautifulsoup4 = "*"
-lxml = "*"
-requests = "*"
-google-api-python-client = "*"
 flask-restful = "*"
-python-dotenv = "*"
 flask-cors = "*"
 
 [dev-packages]
