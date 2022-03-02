@@ -83,6 +83,7 @@ export default {
       }
     },
     keepTabs(val) {
+      // check if the video was already displayed
       if(this.videos.includes(val.id)) {
         val = {...val, reloads: val.reloads + 1}
         return

@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - 8080:8080
+
+  database:
+    platform: linux/x86_64
+    build: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  redis:
+    image: redis:6.2.6-alpine
+    ports:
+      - 6379:6379
+
+  worker:
+    build: ./worker
+    environment:
+      DEVELOPER_KEY: ${DEVELOPER_KEY}
+    depends_on:
+      - redis
+      - database
+
+  api:
+    build: ./server
+    ports:
+      - 6060:5000
+    depends_on:
+      - database
