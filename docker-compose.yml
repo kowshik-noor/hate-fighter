@@ -9,6 +9,7 @@ services:
 
   database:
     platform: linux/x86_64
+    restart: always
     build: ./database
     environment:
       MYSQL_ROOT_PASSWORD: root
