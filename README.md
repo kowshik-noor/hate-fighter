@@ -30,6 +30,10 @@ There may be an error where a a video wont show up, and the site freezes. This i
 
 ** A Simple YouTube Guessing Game **
 
+<p align="center">
+<img src="./readme_assets/game.gif" width="80%">
+</p>
+
 H8 FIGHTER is a simple guessing game where the user sees two random YouTube videos and guesses which one has the most dislikes. 
 
 ### The Story
