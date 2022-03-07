@@ -24,7 +24,7 @@
 
 ## Description
 
-** A Simple YouTube Guessing Game **
+**A Simple YouTube Guessing Game**
 
 <p align="center">
 <img src="./readme_assets/game.gif" width="80%">
@@ -50,7 +50,7 @@ Can you get a high score of 10?
 
 ## Technical Features
 
-*** This project is containerized using Docker ***
+**This project is containerized using Docker**
 
 If you have Docker installed, you can run this project using `docker-compose up`.
 
