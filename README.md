@@ -84,7 +84,7 @@ I used the Beautiful Soup package to extract a random YouTube video ID from <a h
 
 #### YouTube Data API
 
-I passed the video ID into the YouTube Data API to get the video title and channel name. 
+I passed the video ID into the YouTube Data API to get the video title and channel name. I wouldn't need to use the YouTube Data API altogether if I didn't need the channel name. I could extract the video title from Random YouTube Generator. 
 
 #### Return YouTube Dislike API
 
