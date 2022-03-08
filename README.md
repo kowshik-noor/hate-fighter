@@ -52,7 +52,7 @@ Can you get a high score of 10?
 
 **This project is containerized using Docker**
 
-If you have Docker installed, you can run this project using `docker-compose up`.
+If you have Docker installed, you can run this project by adding your API key for the YouTube Data API and using `docker-compose up`.
 
 ### Client
 
